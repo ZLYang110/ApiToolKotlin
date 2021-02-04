@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white"
+    android:layout_marginTop="1dp"
+    android:orientation="vertical"
+    android:padding="@dimen/common_edge_10">
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/text_notes"
+            tools:text="21小时前" />
+        <ImageView
+            android:id="@+id/iv_mean"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            app:tint="@color/five" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:layout_marginTop="@dimen/common_edge_10"
+        android:layout_marginBottom="@dimen/common_edge_10"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:includeFontPadding="true"
+            android:lineSpacingExtra="0dp"
+            android:maxLines="5"
+            android:textColor="@color/text_second"
+            android:textSize="@dimen/text_auxiliary"
+            tools:text="公众号文章列表强势上线"
+            tools:visibility="visible" />
+    </LinearLayout>
+</RelativeLayout>

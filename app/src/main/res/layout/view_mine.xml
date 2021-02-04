@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center_horizontal">
+
+    <com.zlyandroid.apitoolkotlin.widget.ArcView
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_marginTop="-180dp"
+        app:arcHeight="25dp"
+        app:bgColor="@color/main"
+        app:lgColor="@color/main" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/common_left_15"
+        android:paddingRight="@dimen/common_right_15"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_edge_20"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/common_left_15"
+                android:paddingRight="@dimen/common_right_15">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/common_edge_20"
+                    android:paddingBottom="@dimen/common_edge_20">
+
+                    <com.zlyandroid.wankotlin.widget.CircleImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        app:civ_border_width="1dp"
+                        app:civ_border_color="@color/main"
+                        android:src="@mipmap/avatar" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/margin_common">
+
+                        <TextView
+                            android:id="@+id/tv_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SiberiaDante"
+                            android:textColor="@color/text_surface"
+                            android:textSize="@dimen/textSize_title"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_level_num"
+                            style="@style/CustomLabelBlack"
+                            android:layout_marginTop="5dp"
+                            android:text="Lv.4" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_user_space"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="个人空间"
+                        android:paddingRight="@dimen/common_right_5"
+                        android:textColor="@color/text_surface"
+                        android:textSize="@dimen/textSize_content" />
+
+                    <ImageView  style="@style/goBackRight" />
+                </LinearLayout>
+
+                <View style="@style/lineDiver" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/common_edge_10"
+                        android:text="一直学习下去，冲冲冲"
+                        android:textColor="@color/text_surface"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_common">
+
+                <LinearLayout
+                    android:id="@+id/ll_collection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="@dimen/margin_common"
+                        android:src="@mipmap/icon_collection_yes"
+                        android:tint="@color/rednrd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收藏"
+                        android:textColor="@color/text_surface"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="@dimen/margin_common"
+                        android:src="@mipmap/icon_history"
+                        android:tint="@color/rednrd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="历史"
+                        android:textColor="@color/text_surface"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_signin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="@dimen/margin_common"
+                        android:src="@mipmap/icon_signin"
+                        android:tint="@color/rednrd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="签到"
+                        android:textColor="@color/text_surface"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="@dimen/margin_common"
+                        android:src="@mipmap/icon_wallet"
+                        android:tint="@color/rednrd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="钱包"
+                        android:textColor="@color/text_surface"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="@dimen/common_edge_20"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_left_15"
+                android:layout_marginRight="@dimen/common_right_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_user_apicloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_press_color_surface"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/icon_cloud"
+                        android:tint="@color/main" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="Api设置"
+                        android:textColor="@color/text_surface"
+                        android:textSize="@dimen/textSize_content" />
+
+                    <ImageView  style="@style/goBackRight" />
+                </LinearLayout>
+
+                <View style="@style/lineDiver" />
+
+                <LinearLayout
+                    android:id="@+id/ll_user_namre"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_press_color_surface"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/icon_github"
+                        android:tint="@color/main" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="开源项目"
+                        android:textColor="@color/text_surface"
+                        android:textSize="@dimen/textSize_content" />
+
+                    <ImageView  style="@style/goBackRight" />
+                </LinearLayout>
+
+                <View style="@style/lineDiver" />
+
+                <LinearLayout
+                    android:id="@+id/ll_about_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_press_color_surface"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/icon_about"
+                        android:tint="@color/main" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="关于作者"
+                        android:textColor="@color/text_surface"
+                        android:textSize="@dimen/textSize_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:singleLine="true"
+                        android:text="请他喝杯咖啡~"
+                        android:textColor="@color/text_accent"
+                        android:textSize="@dimen/text_notes" />
+
+                    <ImageView  style="@style/goBackRight" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</FrameLayout>

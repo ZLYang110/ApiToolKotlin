@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+
+    <com.zlylib.titlebarlib.ActionBarCommon
+        android:id="@+id/abc"
+        style="@style/ActionBar.Common.Back"
+        app:abc_rightText=""
+        app:abc_titleText="" />
+    <com.haibin.calendarview.CalendarLayout
+        android:id="@+id/calendarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/abc"
+        app:calendar_content_view_id="@+id/ll_bottom">
+
+        <com.haibin.calendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:calendar_padding="10dp"
+            app:current_month_lunar_text_color="#CFCFCF"
+            app:current_month_text_color="#333333"
+            app:max_year="2030"
+            app:min_year="2010"
+            app:month_view="com.zlyandroid.apitoolkotlin.util.custom.CustomMonthView"
+            app:month_view_show_mode="mode_fix"
+            app:other_month_lunar_text_color="#e1e1e1"
+            app:other_month_text_color="#e1e1e1"
+            app:scheme_text="假"
+            app:scheme_text_color="#333"
+            app:scheme_theme_color="#128c4b"
+            app:selected_lunar_text_color="#fff"
+            app:selected_text_color="#fff"
+            app:selected_theme_color="#046cea"
+            app:week_background="#fff"
+            app:week_start_with="sun"
+            app:week_text_color="#000"
+            app:week_view="com.zlyandroid.apitoolkotlin.util.custom.CustomWeekView"
+            app:year_view="com.zlyandroid.apitoolkotlin.util.custom.CustomYearView"
+            app:year_view_day_text_color="#333333"
+            app:year_view_day_text_size="7sp"
+            app:year_view_month_text_color="#ff0000"
+            app:year_view_month_text_size="20sp"
+            app:year_view_scheme_color="#f17706"
+            app:year_view_select_text_color="#fff"
+            app:year_view_week_height="12dp"
+            app:year_view_week_text_color="#e1e1e1"
+            app:year_view_week_text_size="6sp" />
+        <RelativeLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:background="@color/surface"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:paddingBottom="@dimen/common_edge_20"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginBottom="@dimen/common_edge_15"
+                android:background="@color/background"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_fourth"
+                    android:text="已经累计签到" />
+                <TextView
+                    android:id="@+id/tv_dayNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_accent"
+                    android:textSize="25dp"
+                    android:text=" 0 " />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:textColor="@color/text_fourth"
+                    android:text="天" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_sign"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_main_radius_max"
+                android:gravity="center"
+                android:textColor="@color/text_invert"
+                android:text="签到" />
+
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_bottom_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|center"
+                android:paddingBottom="@dimen/common_edge_15"
+                android:layout_marginBottom="@dimen/common_edge_20"
+                android:layout_below="@+id/ll_bottom_sign"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+
+                    android:background="@color/background"/>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/common_edge_20"
+                        android:layout_marginBottom="@dimen/common_edge_15"
+                        android:textColor="@color/text_surface"
+                        android:text="你今天出生了~" />
+                </ScrollView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/common_edge_15"
+                android:textColor="@color/text_fourth"
+                android:text="滑倒低，人生顺到底~" />
+
+
+        </RelativeLayout>
+    </com.haibin.calendarview.CalendarLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="?attr/colorPrimary" />
+</RelativeLayout>

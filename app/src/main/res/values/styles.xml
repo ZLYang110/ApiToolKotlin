@@ -1,0 +1,148 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/text_surface</item>
+        <item name="colorControlNormal">@color/text_surface</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/line</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:listDivider">@drawable/my_divider</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+
+
+    <!--circle Image View-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <style name="AppTheme.Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/textSize_content</item>
+        <item name="android:textColor">@color/text_surface</item>
+    </style>
+    <style name="text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/textSize_content</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="text.content_small">
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:textColor">@color/text_surface</item>
+    </style>
+    <style name="text.content_big">
+        <item name="android:textSize">@dimen/textSize_title</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.Label.Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textSize_titleSmall</item>
+    </style>
+
+
+    <style name="lineDiver">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:divider">@color/line</item>
+        <item name="android:background">@color/line</item>
+    </style>
+    <style name="goBackRight">
+        <item name="android:layout_width">13dp</item>
+        <item name="android:layout_height">12dp</item>
+        <item name="android:rotation">180</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@mipmap/ic_back</item>
+        <item name="android:tint">@color/five</item>
+    </style>
+
+    <style name="LineOneVertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:background">@color/fourth</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <!--<item name="android:layout_height">64dp</item>-->
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="CustomLabelBlueBg">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@color/main</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CustomLabelBlueGenderStroke">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:background">@drawable/btn_radius_blue_border_square_bg</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/main</item>
+    </style>
+
+    <style name="CustomLabelBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/btn_radius_black_border_square_bg</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!--弧形的界面属性-->
+    <declare-styleable name="ArcView">
+        <attr name="arcHeight" format="dimension"/>
+        <attr name="lgColor"   format="color"/>
+        <attr name="bgColor" format="color"/>
+    </declare-styleable>
+</resources>

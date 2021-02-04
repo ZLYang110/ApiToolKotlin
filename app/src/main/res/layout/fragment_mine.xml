@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <View
+        android:id="@+id/parallax"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/main"
+        android:layout_marginTop="-200dp"
+        />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePreviewInEditMode="false">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:id="@+id/header"
+            android:background="@color/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    <include layout="@layout/view_mine" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <com.zlylib.titlebarlib.ActionBarCommon
+        android:id="@+id/abc"
+        style="@style/ActionBar.Common"
+        android:background="@color/main"
+        app:abc_rightIconRes="@mipmap/icon_setting"
+        app:ab_bottomLineHeight="0dp"
+        app:abc_rightIconMarginRight="15dp"
+        app:abc_rightIconPadding="14dp"
+        app:abc_rightIconColor="@color/foreground_top"
+        app:abc_titleTextColor="@color/foreground_top"
+        app:abc_titleText="" />
+
+</FrameLayout>

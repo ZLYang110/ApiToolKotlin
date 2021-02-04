@@ -1,0 +1,4 @@
+rootProject.name='ApiToolKotlin'
+include ':app'
+include ':common_core'
+include ':module_weather'

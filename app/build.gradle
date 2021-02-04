@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+    generateStubs = true
+}
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        renderscriptSupportModeEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+         //resourcePrefix project.name + "_"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ "room.incremental"     : "true" ]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    if (isModule_weather.toBoolean()) {
+        implementation project(':common_core')
+    } else {
+        implementation project(':module_weather')
+    }
+    implementation rootProject.ext.dependencies.roomRuntime
+    kapt rootProject.ext.dependencies.roomCompiler
+    implementation rootProject.ext.dependencies.roomKtx
+
+    kapt rootProject.ext.dependencies.aroutercompiler
+
+    implementation rootProject.ext.dependencies.bravh
+    implementation rootProject.ext.dependencies.flexbox
+    implementation rootProject.ext.dependencies.glide
+
+
+    implementation rootProject.ext.dependencies.MagicIndicator
+
+
+
+    implementation rootProject.ext.dependencies.PickerView
+
+    implementation rootProject.ext.dependencies.roundview
+    implementation rootProject.ext.dependencies.imageViewer
+    implementation rootProject.ext.dependencies.calendarview
+    implementation  rootProject.ext.dependencies.SCardView
+    //implementation rootProject.ext.dependencies.greendao
+    //implementation rootProject.ext.dependencies.sqlcipher
+
+
+
+}

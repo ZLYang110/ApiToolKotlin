@@ -9,6 +9,7 @@ import com.zlyandroid.basic.common.util.PreUtils
 import com.zlyandroid.basic.common.util.log.L
 import java.io.*
 import javax.crypto.spec.SecretKeySpec
+import kotlin.jvm.Throws
 
 object UserInfoManager {
     private const val TAG = "UserInfoManager"

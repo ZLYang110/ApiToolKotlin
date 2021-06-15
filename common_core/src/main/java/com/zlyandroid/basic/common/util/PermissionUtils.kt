@@ -1,4 +1,4 @@
-package com.zlyandroid.apitoolkotlin.util
+package com.zlyandroid.basic.common.util
 
 import android.Manifest
 import android.content.Context
@@ -17,7 +17,8 @@ object PermissionUtils {
     object PermissionGroup {
         val PERMISSIONS_STORAGE = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION
         )
 
         val PERMISSIONS_CAME = arrayOf(

@@ -21,7 +21,6 @@ android {
         versionName rootProject.ext.android.versionName
         renderscriptSupportModeEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         multiDexEnabled true
          //resourcePrefix project.name + "_"
 

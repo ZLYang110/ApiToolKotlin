@@ -1,4 +1,4 @@
-package com.zlyandroid.apitoolkotlin.app
+package com.zlyandroid.module.weather.app
 
 import android.app.Application
 import android.content.Context
@@ -7,6 +7,8 @@ import android.os.Handler
 import com.alibaba.android.arouter.launcher.ARouter
 import com.zlyandroid.basic.common.util.PreUtils
 import com.zlyandroid.basic.common.util.log.L
+import com.zlyandroid.module.weather.core.Data
+import com.zlyandroid.module.weather.db.ApiDb
 
 /**
  * author: zhangliyang
@@ -36,8 +38,10 @@ object AppConfig {
         //日志
         L.init("apiLog", debug)
 
+        //数据库初始化
+        ApiDb.init(mapplication)
 
-
+       // Data.init()
     }
 
 

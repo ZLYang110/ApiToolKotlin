@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
         ctl_main.setTitle("水果名称")
         val s = generateFruitContent()
         tv_fruit.setText(s)
+
+        sunDayView.setTime("22:00","9:00","9:00","亏凸月")
     }
 
     private fun generateFruitContent(): String? {

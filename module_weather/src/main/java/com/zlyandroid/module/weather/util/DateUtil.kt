@@ -16,6 +16,7 @@ object DateUtil {
 
     var yyyy_mm_dd = "yyyy-MM-dd"
     var yyyymmdd = "yyyyMMdd"
+    var HHmm = "HH:mm"
     var yyyymmddhhmmss = "yyyyMMddHHmmss"
     var yyyymmdd_hh_mm_ss = "yyyyMMdd_HH:mm:ss"
     var yyyy_mm_dd_hh_mm_ss = "yyyy-MM-dd HH:mm:ss"
@@ -24,25 +25,24 @@ object DateUtil {
      * 获取现在时间
      * @return 返回时间类型 yyyy-MM-dd HH:mm:ss
      */
-    fun getNowDate(): Date {
+    fun getNowDate(): String {
         val simpleDateFormat = SimpleDateFormat(yyyy_mm_dd_hh_mm_ss) // HH:mm:ss
         val date = Date(System.currentTimeMillis())
-        return date
+        return simpleDateFormat.format(date)
     }
 
-    fun getNowDate(format: String): Date {
+    fun getNowDate(format: String): String {
         val simpleDateFormat = SimpleDateFormat(format) // HH:mm:ss
         val date = Date(System.currentTimeMillis())
-        return date
+        return simpleDateFormat.format(date)
     }
-
 
 
     /**
      * 把Data日期转成String
      * @return
      */
-      fun getTime(format: String,date: Date): String { //可根据需要自行截取数据显示
+    fun getTime(format: String, date: Date): String { //可根据需要自行截取数据显示
         val format = SimpleDateFormat("yyyy-MM-dd")
         return format.format(date)
     }
@@ -58,13 +58,14 @@ object DateUtil {
         val strtodate = formatter.parse(strDate, pos)
         return strtodate
     }
+
     /**
      * 将长时间格式字符串转换为时间 format
      * @param strDate
      * @return
      */
     fun strToDateHHmm(strDate: String): String {
-       var strDate2 = strDate.substring(0,strDate.lastIndexOf("+")).replace("T"," ");
+        var strDate2 = strDate.substring(0, strDate.lastIndexOf("+")).replace("T", " ");
         var formatter1 = SimpleDateFormat("yyyy-MM-dd HH:mm")
         var formatter2 = SimpleDateFormat("HH:mm")
         var strtodate: String? = null
@@ -109,4 +110,25 @@ object DateUtil {
 
     }
 
+
+    /**
+     * 判断2个时间大小
+     * yyyy-MM-dd HH:mm 格式（自己可以修改成想要的时间格式）
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    fun timeCompare(startTime: String, endTime: String): Boolean {
+        try {
+            var formatter = SimpleDateFormat("HH:mm")
+            val date1: Date = formatter.parse(startTime) //开始时间
+            val date2: Date = formatter.parse(endTime) //结束时间
+            if (date1.time < date2.time) {
+                return true
+            }
+        } catch (e: Exception) {
+
+        }
+        return false
+    }
 }

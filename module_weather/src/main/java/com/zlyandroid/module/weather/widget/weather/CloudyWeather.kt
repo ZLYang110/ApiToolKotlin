@@ -56,7 +56,7 @@ class CloudyWeather(context: Context, isNight: Boolean) : BaseWeather(context, i
     }
 
     override fun getSkyBackgroundGradient(): IntArray? {
-        return if (isNight) Companion.SkyBackground.CLOUDY_N else Companion.SkyBackground.CLOUDY_D
+        return if (isNight) Companion.SkyBackground.CLEAR_N else Companion.SkyBackground.CLEAR_D
     }
     class CircleHolder(
         private val cx: Float,

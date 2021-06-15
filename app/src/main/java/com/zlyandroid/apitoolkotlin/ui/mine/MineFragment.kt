@@ -13,6 +13,8 @@ import com.zlyandroid.apitoolkotlin.ui.mine.activity.SignInActivity
 import com.zlyandroid.apitoolkotlin.ui.mine.activity.SpaceActivity
 import com.zlyandroid.apitoolkotlin.ui.mine.activity.WalletActivity
 import com.zlyandroid.basic.common.base.BaseFragment
+import com.zlyandroid.basic.common.util.SmartRefreshUtils
+import com.zlyandroid.basic.common.util.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.view_mine.*
 

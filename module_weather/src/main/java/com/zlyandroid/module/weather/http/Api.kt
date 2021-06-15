@@ -1,6 +1,7 @@
 package com.zlyandroid.module.weather.http
 
 import com.zlyandroid.module.weather.http.response.ResponseBean
+import com.zlyandroid.module.weather.ui.bean.Now
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -14,6 +15,7 @@ interface Api {
 
     /**
      * 现在的天气
+     * @param location  需要查询地区的LocationID或以英文逗号分隔的经度,纬度坐标（十进制），LocationID可通过城市搜索服务获取。例如 location=101010100 或 location=116.41,39.92
      */
 
     @GET("v7/weather/now")
@@ -21,7 +23,7 @@ interface Api {
             : Observable<HttpResult<Now>>
 
     /**
-     * 现在的天气
+     * 24h天气
      */
 
     @GET("v7/weather/24h")
@@ -41,5 +43,15 @@ interface Api {
 
     @GET("v7/air/now")
     fun nowAir(@Query("location") location: String, @Query("key") key: String)
-            : Observable<HttpResult<Air>>
+            : Observable<HttpResult<NowAir>>
+
+    /**
+     * 城市信息查询
+     * @param location  需要查询地区的名称，支持文字、以英文逗号分隔的经度,纬度坐标（十进制）、LocationID或Adcode（仅限中国城市）。例如 location=北京 或 location=116.41,39.92
+     *
+     */
+
+    @GET("v2/city/lookup")
+    fun lookup(@Query("location") location: String, @Query("key") key: String)
+            : Observable<HttpResult<MutableList<Location>>>
 }

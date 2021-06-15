@@ -23,12 +23,9 @@ open class App : Application() , Application.ActivityLifecycleCallbacks  {
         super.onCreate()
         application = this
         registerActivityListener()
-
     }
 
     companion object {
-
-
         private lateinit var application: Application
         private val activities = Collections.synchronizedList(LinkedList<Activity>())
         private val singleInstanceActivities =
@@ -267,7 +264,7 @@ open class App : Application() , Application.ActivityLifecycleCallbacks  {
         if ( activities.contains(activity)) {
             activities.remove(activity)
         }
-        L.i(activities)
+      ///  L.i(activities)
 
     }
     open fun registerActivityListener() {

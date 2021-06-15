@@ -1,4 +1,4 @@
-package com.zlyandroid.module.weather.widget
+    package com.zlyandroid.module.weather.widget
 
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -6,7 +6,9 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.zlyandroid.basic.common.util.log.L
 import com.zlyandroid.module.weather.R
+import com.zlyandroid.module.weather.util.DateUtil
 
 
 /**
@@ -41,8 +43,15 @@ class SunDayView constructor(
     private var sunColor: Int = 0
     private var timeTextColor: Int = 0
     private var timeTextSize: Float = 0.toFloat()
-    private var mSunriseTime = "6:00"
-    private var mSunsetTime = "19:00"
+
+    /**
+    * 如果是白天就是日出日落
+     * 如果是晚上就是月出月落
+    * */
+    private var mSunriseTime = "6:00" //日出
+    private var mSunsetTime = "19:00" //日落
+    private var moonPhase= "亏凸月"
+
 
     private lateinit var mSunriseBitmap: Bitmap
     private lateinit var mSunsetBitmap: Bitmap
@@ -62,7 +71,7 @@ class SunDayView constructor(
             lineColor = typedArray.getColor(R.styleable.SunDayView_lineColor, Color.WHITE)
             sunColor = typedArray.getColor(R.styleable.SunDayView_sunColor, Color.YELLOW)
             timeTextColor = typedArray.getColor(R.styleable.SunDayView_timeTextColor, Color.GRAY)
-            timeTextSize = typedArray.getDimension(R.styleable.SunDayView_timeTextSize, 40f)
+            timeTextSize = typedArray.getDimension(R.styleable.SunDayView_timeTextSize, 30f)
             typedArray.recycle()
         }
         mLinePaint = Paint()
@@ -71,6 +80,7 @@ class SunDayView constructor(
         mLinePaint.style = Paint.Style.STROKE
         mLinePaint.strokeWidth = 3f
         mLinePaint.strokeCap = Paint.Cap.ROUND
+        mLinePaint.alpha = 100
 
         mCenterPoint = Point()
         mArcPaint = Paint()
@@ -80,6 +90,7 @@ class SunDayView constructor(
         mArcPaint.strokeWidth = 3f
         mArcPaint.pathEffect = DashPathEffect(floatArrayOf(20f, 15f), 20f)
         mArcPaint.strokeCap = Paint.Cap.ROUND
+        mArcPaint.alpha = 100
         mRectF = RectF()
 
 
@@ -89,15 +100,23 @@ class SunDayView constructor(
         mSunPaint.style = Paint.Style.STROKE
         mSunPaint.strokeWidth = 3f
         mSunPaint.pathEffect = DashPathEffect(floatArrayOf(20f, 15f), 20f)
-        mSunriseBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_sunrise)
-        mSunsetBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_sunset)
+        val opt = BitmapFactory.Options()
+        opt.inScaled = false         //设置这个属性防止因为不同的dpi文件夹导致缩放
+        opt.inPreferredConfig=Bitmap.Config.ARGB_8888
+        mSunriseBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_sunrise,opt).copy(Bitmap.Config.ARGB_8888,true)
+        mSunriseBitmap.density= resources.displayMetrics.densityDpi
+        mSunsetBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_sunset,opt).copy(Bitmap.Config.ARGB_8888,true)
+        mSunsetBitmap.density= resources.displayMetrics.densityDpi
         mSunPaint.colorFilter =
             PorterDuffColorFilter(sunColor, PorterDuff.Mode.SRC_ATOP)//设置后bitmap才会填充颜色
+
+
 
         mTimePaint = Paint()
         mTimePaint.color = timeTextColor
         mTimePaint.textSize = timeTextSize
         mTimePaint.textAlign = Paint.Align.CENTER
+        mTimePaint.alpha = 180
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -113,7 +132,7 @@ class SunDayView constructor(
         mHeight = h - paddingBottom - paddingTop
         mRadius = ((if (mWidth / 2 < mHeight) mWidth / 2 else mHeight) - dipToPx(
             mContext,
-            15f
+            25f
         )).toFloat()//留出一定空间
         mCenterPoint.x = mWidth / 2
         mCenterPoint.y = mHeight
@@ -147,9 +166,8 @@ class SunDayView constructor(
             lineYLocate + timeTextSize + 15f,
             mTimePaint
         )
-        mTimePaint.textSize = 40f
         canvas.drawText(
-            "日出日落",
+            moonPhase,
             mCenterPoint.x.toFloat(),
             lineYLocate + timeTextSize+ 15f,
             mTimePaint
@@ -162,7 +180,7 @@ class SunDayView constructor(
             nowAngle = 0f
             canvas.drawBitmap(
                 mSunsetBitmap,
-                (mCenterPoint.x - mRadius * kotlin.math.cos(halfRemainAngle)).toFloat(),
+                (mCenterPoint.x - mRadius * kotlin.math.cos(halfRemainAngle)).toFloat()-10,
                 lineYLocate - mSunsetBitmap.height,
                 mSunPaint
             )//太阳
@@ -194,8 +212,8 @@ class SunDayView constructor(
 
         canvas.drawArc(
             mRectF,
-            starAngle.toFloat(),
-            nowAngle - 3.5f,
+            starAngle.toFloat()-2f,
+            nowAngle - 0f,
             false,
             mSunPaint
         )//留出3度让小太阳背景空白
@@ -225,12 +243,36 @@ class SunDayView constructor(
         clearAnimation()
     }
 
-    fun setTime(mSunriseTime: String, mSunsetTime: String, nowTime: String) {
-        this.mSunriseTime = mSunriseTime
-        this.mSunsetTime = mSunsetTime
-        mTotalTime = transToMinuteTime(mSunsetTime) - transToMinuteTime(mSunriseTime)
-        this.mNowTime = transToMinuteTime(nowTime) - transToMinuteTime(mSunriseTime)
+    /**
+     * mSunriseTime 开始时间
+     * mSunriseTime 结束时间
+     * nowTime 现在的时间
+     *
+     * 24h制，格式 HH:mm
+     * 开始时间 < 结束时间  认为白天
+     * 开始时间 > 结束时间  认为晚上
+    * */
+    fun setTime(mSunriseTime: String, mSunsetTime: String, nowTime: String,moonPhase: String) {
+
+        this.moonPhase = moonPhase
+
+        if(DateUtil.timeCompare(mSunriseTime,mSunsetTime)){
+            mTotalTime = transToMinuteTime(mSunsetTime) - transToMinuteTime(mSunriseTime)
+            mNowTime = transToMinuteTime(nowTime) - transToMinuteTime(mSunriseTime)
+            this.mSunriseTime ="日出 "+ mSunriseTime
+            this.mSunsetTime = mSunsetTime +" 日落"
+        }else{
+            mTotalTime =transToMinuteTime("24:00")-transToMinuteTime(mSunriseTime)+ transToMinuteTime(mSunsetTime)
+            mNowTime = transToMinuteTime(nowTime) - transToMinuteTime(mSunriseTime)
+            if(mNowTime<0){
+                mNowTime =transToMinuteTime("24:00") - transToMinuteTime(mSunriseTime) + transToMinuteTime(nowTime)
+            }
+            this.mSunriseTime ="月出 "+ mSunriseTime
+            this.mSunsetTime = mSunsetTime +" 月落"
+        }
         isSetTime = true
+
+        startAnimation()
     }
 
     fun setPercent(percent: Float) {
@@ -239,6 +281,7 @@ class SunDayView constructor(
     }
 
     private fun transToMinuteTime(time: String): Int {//"00:00"
+
         val s = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         return Integer.parseInt(s[0]) * 60 + Integer.parseInt(s[1])
     }

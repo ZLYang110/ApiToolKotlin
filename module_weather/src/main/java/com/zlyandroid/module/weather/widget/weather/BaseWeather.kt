@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.GradientDrawable
 import com.zlyandroid.module.weather.widget.weather.*
+import java.util.ArrayList
 
 /**
  * @author zhangliyang
@@ -59,6 +60,7 @@ import com.zlyandroid.module.weather.widget.weather.*
         }
 
 
+
         open fun makeDrawerByType(context: Context, type: Type): BaseWeather {
             return when (type) {
                 Type.SUNNY -> SunnyWeather(context,false)
@@ -73,12 +75,10 @@ import com.zlyandroid.module.weather.widget.weather.*
                 Type.FOG_NIGHT -> FogWeather(context, true)//雾 晚上
                 Type.CLOUDY_DAY -> CloudyWeather(context, false)//多云 白天
                 Type.CLOUDY_NIGHT -> CloudyWeather(context, true)//多云 晚上
-                Type.HAZE_DAY -> CloudyWeather(context, false)//霾 白天
-                Type.HAZE_NIGHT -> CloudyWeather(context, true)//霾 晚上
-                Type.HAZE_DAY -> CloudyWeather(context, false)//霾 白天
-                Type.HAZE_NIGHT -> CloudyWeather(context, true)//霾 晚上
-                Type.WIND_DAY -> CloudyWeather(context, false)//风 白天
-                Type.WIND_NIGHT -> CloudyWeather(context, true)//风 晚上
+                Type.HAZE_DAY -> HazeWeather(context, false)//霾 白天
+                Type.HAZE_NIGHT -> HazeWeather(context, true)//霾 晚上
+                Type.WIND_DAY -> WindWeather(context, false)//风 白天
+                Type.WIND_NIGHT -> WindWeather(context, true)//风 晚上
                 Type.SAND_DAY -> SandWeather(context, false)//沙 白天
                 Type.SAND_NIGHT -> SandWeather(context, true)//沙 晚上
                 Type.OVERCAST_DAY -> OvercastWeather(context, false)//阴天 白天

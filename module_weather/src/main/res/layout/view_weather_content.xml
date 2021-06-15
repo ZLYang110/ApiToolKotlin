@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/five"
     android:orientation="vertical"
     tools:ignore="ResourceName">
 
@@ -26,7 +25,8 @@
             <TextView
                 android:id="@+id/tv_temp"
                 style="@style/text.white"
-                android:text="5"
+                android:text=""
+                android:layout_marginLeft="10dp"
                 android:textSize="90dp" />
 
             <TextView
@@ -46,8 +46,10 @@
             <TextView
                 android:id="@+id/tv_tempMax"
                 style="@style/text.white"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:text="4" />
+                android:text="0" />
 
             <TextView
                 style="@style/text.white"
@@ -58,7 +60,7 @@
                 android:id="@+id/tv_tempMin"
                 style="@style/text.whitealpha"
                 android:layout_centerHorizontal="true"
-                android:text="-8" />
+                android:text="0" />
         </LinearLayout>
 
         <TextView
@@ -71,6 +73,7 @@
 
     <!--未来24h-->
     <LinearLayout
+        android:id="@+id/ll_view_24h"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -115,7 +118,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:scrollbars="horizontal"
+            android:scrollbars="none"
             tools:itemCount="1"
             tools:layoutmanager="LinearLayoutManager"
             tools:listitem="@layout/item_hour" />
@@ -130,6 +133,7 @@
 
     <!--未来7天-->
     <LinearLayout
+        android:id="@+id/ll_view_7d"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -149,6 +153,7 @@
 
     <!--空气质量-->
     <LinearLayout
+        android:id="@+id/ll_view_air"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -194,18 +199,20 @@
                     android:text="污染指数"
                     />
                 <com.zlyandroid.module.weather.widget.CircleProgress
+                    android:id="@+id/cp_air"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="15dp"
                     app:bgArcColor="@color/background_mask"
                     app:bgArcWidth="6dp"
                     app:arcWidth="8dp"
                     app:valueColor="@color/white"
                     app:hint="湿度"
+                    app:hintSize="@dimen/sp_14"
                     app:value="0"
                     app:hintColor="@color/white"
                     app:maxAndMinValueColor="@color/white"
-                    app:maxValue="500"
+                    app:maxValue="300"
                     app:startAngle="125"
                     app:sweepAngle="290"
                     />
@@ -229,5 +236,83 @@
 
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
+
+    <!--日出日落-->
+    <LinearLayout
+        android:id="@+id/ll_view_sun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_left_20"
+            android:layout_marginRight="@dimen/common_left_20"
+            android:layout_marginTop="@dimen/common_edge_15"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/text.white"
+                android:alpha="0.8"
+                android:textSize="16dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="日出日落"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/division_line"
+            android:layout_marginLeft="@dimen/common_left_20"
+            android:layout_marginRight="@dimen/common_left_20"
+            android:alpha="0.2"
+            android:background="@color/line" />
+        <com.zlyandroid.module.weather.widget.SunDayView
+            android:id="@+id/sunDayView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_edge_20"
+            app:lineColor="@color/surface_top_alpha"
+            app:timeTextColor="@color/background"
+            app:timeTextSize="12dp"
+            android:layout_marginLeft="@dimen/common_left_20"
+            android:layout_marginRight="@dimen/common_right_20"
+
+            />
+
+    </LinearLayout>
+
+    <!--底部-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_edge_20"
+        android:layout_marginBottom="@dimen/common_edge_20"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/text.white"
+            android:alpha="0.5"
+            android:textSize="12dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="和风天气"
+            />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="10dp"
+            android:alpha="0.2"
+            android:layout_marginLeft="@dimen/common_left_5"
+            android:layout_marginRight="@dimen/common_right_5"
+            android:background="@color/line" />
+        <TextView
+            style="@style/text.white"
+            android:alpha="0.5"
+            android:textSize="12dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="5dp"
+            android:text="中国气象"
+            />
     </LinearLayout>
 </LinearLayout>

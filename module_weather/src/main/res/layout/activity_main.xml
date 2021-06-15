@@ -77,6 +77,17 @@
                     app:startAngle="125"
                     app:sweepAngle="290"
                     />
+                <com.zlyandroid.module.weather.widget.SunDayView
+                    android:id="@+id/sunDayView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:lineColor="@color/surface_top_alpha"
+                    app:timeTextColor="@color/background"
+                    android:layout_marginLeft="@dimen/common_left_20"
+                    android:layout_marginRight="@dimen/common_right_20"
+                    />
+
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

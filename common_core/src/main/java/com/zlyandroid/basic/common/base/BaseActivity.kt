@@ -64,8 +64,8 @@ abstract class BaseActivity() : RxAppCompatActivity(),ActivityPresenter,View.OnC
     /**
      * 是否注册事件分发，默认不绑定
      */
-    protected fun isRegisterEventBus(): Boolean{
-        return false;
+    protected open fun isRegisterEventBus(): Boolean{
+        return false
     }
     /**
      * 是否注册SwipeBack

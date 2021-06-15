@@ -84,7 +84,7 @@ class CircleProgress(context: Context, attrs: AttributeSet) : View(context, attr
         mArcWidth = typedArray.getDimension(R.styleable.CircleProgress_arcWidth, 18f)
         mStartAngle = typedArray.getFloat(R.styleable.CircleProgress_startAngle, 125f)
         mSweepAngle = typedArray.getFloat( R.styleable.CircleProgress_sweepAngle, 290f)
-        animTime = typedArray.getInt(R.styleable.CircleProgress_animTime, 1500).toLong()
+        animTime = typedArray.getInt(R.styleable.CircleProgress_animTime, 1000).toLong()
         mValue = typedArray.getFloat( R.styleable.CircleProgress_value, 50f)
         mValueColor = typedArray.getColor(R.styleable.CircleProgress_valueColor, Color.BLACK)
         mValueSize = typedArray.getDimension(R.styleable.CircleProgress_valueSize, 100f )
@@ -155,13 +155,12 @@ class CircleProgress(context: Context, attrs: AttributeSet) : View(context, attr
         mHintPaint.textAlign = Paint.Align.CENTER
 
 
-        startAnimation()
+        //startAnimation()
     }
 
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        L.i("=="+w +"--"+h + "=="+oldw +"--"+oldw)
 
         //求圆弧和圆弧背景的最大宽度
         val minSize = w.coerceAtLeast(h)
@@ -256,6 +255,20 @@ class CircleProgress(context: Context, attrs: AttributeSet) : View(context, attr
         }
         mAnimator.start()
     }
+    /**
+     * 设置数值
+     */
+    fun setValue(value:Float){
+        mValue = value
+        startAnimation()
+    }
+    /**
+     * 设置标签
+     */
+    fun setHint(value:String){
+        hint = value
+        invalidate()
+    }
 
     /**
      * 测量文字高度
@@ -264,4 +277,20 @@ class CircleProgress(context: Context, attrs: AttributeSet) : View(context, attr
         val fontMetrics = paint.fontMetrics
         return abs(fontMetrics.ascent) + fontMetrics.descent
     }
+
+    /**
+     * 判断此View用户是否可见
+     */
+    public fun isCover(): Boolean {
+        var cover = false
+        val rect = Rect()
+        cover = getGlobalVisibleRect(rect)
+        if (cover) {
+            if (rect.width() >= measuredWidth && rect.height() >= measuredHeight) {
+                return !cover
+            }
+        }
+        return true
+    }
+
 }

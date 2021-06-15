@@ -26,6 +26,11 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64"
+        }
+
         if (isModule_weather.toBoolean()) {
             //组件模式下设置applicationId
             applicationId "com.zlyandroid.module.weather"
@@ -78,8 +83,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.material:material:1.1.0'
 
+
+
     api project(':common_core')
     implementation 'androidx.appcompat:appcompat:1.1.0'
-
+    implementation  rootProject.ext.dependencies.location
+    implementation  rootProject.ext.dependencies.flexbox
     kapt rootProject.ext.dependencies.aroutercompiler
+
+    //room数据库
+    implementation rootProject.ext.dependencies.roomRuntime
+    kapt rootProject.ext.dependencies.roomCompiler
+    implementation rootProject.ext.dependencies.roomKtx
+    implementation rootProject.ext.dependencies.swipelayout
 }

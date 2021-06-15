@@ -16,13 +16,14 @@ import com.zlyandroid.apitoolkotlin.ui.mine.dialog.SelectTimeDialog
 import com.zlyandroid.apitoolkotlin.ui.mine.presenter.UserInfoPresenter
 import com.zlyandroid.apitoolkotlin.ui.mine.view.UserInfoView
 import com.zlyandroid.apitoolkotlin.util.DateUtil
-import com.zlyandroid.apitoolkotlin.util.PermissionUtils
 import com.zlyandroid.apitoolkotlin.util.PictureSelector
 import com.zlyandroid.apitoolkotlin.util.file.FileUtils
 import com.zlyandroid.basic.common.base.BaseMvpActivity
 import com.zlyandroid.basic.common.dialog.ListDialog
 import com.zlyandroid.basic.common.listener.SimpleCallback
 import com.zlyandroid.basic.common.listener.SimpleListener
+import com.zlyandroid.basic.common.util.PermissionUtils
+import com.zlyandroid.basic.common.util.SmartRefreshUtils
 import com.zlyandroid.basic.common.util.log.L
 
 import com.zlylib.mypermissionlib.RequestListener

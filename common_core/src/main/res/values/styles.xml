@@ -19,7 +19,7 @@
         <item name="android:layout_height">wrap_content</item>
         <!-- <item name="android:background">?attr/colorPrimary</item>-->
         <item name="android:background">@drawable/bg_white</item>
-        <item name="ab_statusBarMode">dark</item><!--状态栏图标颜色模式，默认light-->
+        <item name="ab_statusBarMode">light</item><!--状态栏图标颜色模式，默认light-->
         <item name="ab_bottomLineHeight">1dp</item><!--底部分割线高度，默认为0dp-->
         <item name="ab_bottomLineResId">@color/line</item>
         <item name="ab_statusBarColor">@color/transparent</item><!--状态栏颜色，默认透明-->

@@ -2,7 +2,7 @@ package com.zlyandroid.module.weather.ui.model
 
 import com.zlyandroid.basic.common.mvp.BaseModel
 import com.zlyandroid.module.weather.http.*
-import com.zlyandroid.module.weather.http.response.ResponseBean
+import com.zlyandroid.module.weather.ui.bean.Now
 import io.reactivex.Observable
 
 /**
@@ -27,7 +27,12 @@ class WeatherModel : BaseModel() {
     }
 
     //空气质量
-    fun nowAir(location: String, key: String): Observable<HttpResult<Air>> {
+    fun nowAir(location: String, key: String): Observable<HttpResult<NowAir>> {
         return RHttp.getAPi().nowAir(location, key)
+    }
+
+    //城市信息查询
+    fun lookup(location: String, key: String): Observable<HttpResult<MutableList<Location>>> {
+        return RHttp2.getAPi().lookup(location, key)
     }
 }
